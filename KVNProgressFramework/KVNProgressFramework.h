@@ -17,7 +17,7 @@ FOUNDATION_EXPORT const unsigned char KVNProgressFrameworkVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <KVNProgressFramework/PublicHeader.h>
 
 
-#import <KVNProgressFramework/UIColor+KVNContrast.>
+#import <KVNProgressFramework/UIColor+KVNContrast.h>
 #import <KVNProgressFramework/UIImage+KVNEmpty.h>
 #import <KVNProgressFramework/UIImage+KVNImageEffects.h>
 #import <KVNProgressFramework/KVNProgress.h>
