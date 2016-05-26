@@ -30,6 +30,22 @@
 		140C0D7A1AE2DB8C0029C90A /* KVNUIImage_KVNEmptySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 140C0D791AE2DB8C0029C90A /* KVNUIImage_KVNEmptySpec.m */; };
 		1482704A1AE2B4E500873272 /* KVNProgressConfigurationTestsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 148270491AE2B4E500873272 /* KVNProgressConfigurationTestsSpec.m */; };
 		1482704E1AE2CBB100873272 /* KVNUIColor+KVNContrastSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1482704D1AE2CBB100873272 /* KVNUIColor+KVNContrastSpec.m */; };
+		78AF4B361CF7324F0071744E /* KVNProgressFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 78AF4B351CF7324F0071744E /* KVNProgressFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78AF4B3D1CF732500071744E /* KVNProgressFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78AF4B331CF7324F0071744E /* KVNProgressFramework.framework */; };
+		78AF4B441CF732500071744E /* KVNProgressFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AF4B431CF732500071744E /* KVNProgressFrameworkTests.m */; };
+		78AF4B481CF732500071744E /* KVNProgressFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78AF4B331CF7324F0071744E /* KVNProgressFramework.framework */; };
+		78AF4B491CF732500071744E /* KVNProgressFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 78AF4B331CF7324F0071744E /* KVNProgressFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		78AF4B5F1CF732660071744E /* UIColor+KVNContrast.h in Headers */ = {isa = PBXBuildFile; fileRef = 78AF4B521CF732660071744E /* UIColor+KVNContrast.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78AF4B601CF732660071744E /* UIColor+KVNContrast.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AF4B531CF732660071744E /* UIColor+KVNContrast.m */; };
+		78AF4B611CF732660071744E /* UIImage+KVNEmpty.h in Headers */ = {isa = PBXBuildFile; fileRef = 78AF4B541CF732660071744E /* UIImage+KVNEmpty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78AF4B621CF732660071744E /* UIImage+KVNEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AF4B551CF732660071744E /* UIImage+KVNEmpty.m */; };
+		78AF4B631CF732660071744E /* UIImage+KVNImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 78AF4B561CF732660071744E /* UIImage+KVNImageEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78AF4B641CF732660071744E /* UIImage+KVNImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AF4B571CF732660071744E /* UIImage+KVNImageEffects.m */; };
+		78AF4B651CF732660071744E /* KVNProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 78AF4B591CF732660071744E /* KVNProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78AF4B661CF732660071744E /* KVNProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AF4B5A1CF732660071744E /* KVNProgress.m */; };
+		78AF4B671CF732660071744E /* KVNProgressConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 78AF4B5B1CF732660071744E /* KVNProgressConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78AF4B681CF732660071744E /* KVNProgressConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AF4B5C1CF732660071744E /* KVNProgressConfiguration.m */; };
+		78AF4B691CF732660071744E /* KVNProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78AF4B5E1CF732660071744E /* KVNProgressView.xib */; };
 		B7AEA695F14877870205F81C /* libPods-KVNProgressTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B43D6870AC5276C24F2B9384 /* libPods-KVNProgressTests.a */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +57,42 @@
 			remoteGlobalIDString = 0AA0DCE61930DFAD00FDD29F;
 			remoteInfo = KVNProgress;
 		};
+		78AF4B3E1CF732500071744E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AA0DCDF1930DFAD00FDD29F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 78AF4B321CF7324F0071744E;
+			remoteInfo = KVNProgressFramework;
+		};
+		78AF4B401CF732500071744E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AA0DCDF1930DFAD00FDD29F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0AA0DCE61930DFAD00FDD29F;
+			remoteInfo = KVNProgress;
+		};
+		78AF4B461CF732500071744E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AA0DCDF1930DFAD00FDD29F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 78AF4B321CF7324F0071744E;
+			remoteInfo = KVNProgressFramework;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		78AF4B4F1CF732500071744E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				78AF4B491CF732500071744E /* KVNProgressFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0A5375791A45784200A7743C /* KVNProgressConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVNProgressConfiguration.h; sourceTree = "<group>"; };
@@ -78,6 +129,23 @@
 		140C0D791AE2DB8C0029C90A /* KVNUIImage_KVNEmptySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVNUIImage_KVNEmptySpec.m; sourceTree = "<group>"; };
 		148270491AE2B4E500873272 /* KVNProgressConfigurationTestsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVNProgressConfigurationTestsSpec.m; sourceTree = "<group>"; };
 		1482704D1AE2CBB100873272 /* KVNUIColor+KVNContrastSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KVNUIColor+KVNContrastSpec.m"; sourceTree = "<group>"; };
+		78AF4B331CF7324F0071744E /* KVNProgressFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KVNProgressFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78AF4B351CF7324F0071744E /* KVNProgressFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVNProgressFramework.h; sourceTree = "<group>"; };
+		78AF4B371CF7324F0071744E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78AF4B3C1CF732500071744E /* KVNProgressFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KVNProgressFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		78AF4B431CF732500071744E /* KVNProgressFrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVNProgressFrameworkTests.m; sourceTree = "<group>"; };
+		78AF4B451CF732500071744E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78AF4B521CF732660071744E /* UIColor+KVNContrast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+KVNContrast.h"; sourceTree = "<group>"; };
+		78AF4B531CF732660071744E /* UIColor+KVNContrast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+KVNContrast.m"; sourceTree = "<group>"; };
+		78AF4B541CF732660071744E /* UIImage+KVNEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KVNEmpty.h"; sourceTree = "<group>"; };
+		78AF4B551CF732660071744E /* UIImage+KVNEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KVNEmpty.m"; sourceTree = "<group>"; };
+		78AF4B561CF732660071744E /* UIImage+KVNImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KVNImageEffects.h"; sourceTree = "<group>"; };
+		78AF4B571CF732660071744E /* UIImage+KVNImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KVNImageEffects.m"; sourceTree = "<group>"; };
+		78AF4B591CF732660071744E /* KVNProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVNProgress.h; sourceTree = "<group>"; };
+		78AF4B5A1CF732660071744E /* KVNProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVNProgress.m; sourceTree = "<group>"; };
+		78AF4B5B1CF732660071744E /* KVNProgressConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVNProgressConfiguration.h; sourceTree = "<group>"; };
+		78AF4B5C1CF732660071744E /* KVNProgressConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVNProgressConfiguration.m; sourceTree = "<group>"; };
+		78AF4B5E1CF732660071744E /* KVNProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KVNProgressView.xib; sourceTree = "<group>"; };
 		AC926D9E042446C786108BC3 /* Pods-KVNProgressTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KVNProgressTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KVNProgressTests/Pods-KVNProgressTests.release.xcconfig"; sourceTree = "<group>"; };
 		B43D6870AC5276C24F2B9384 /* libPods-KVNProgressTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KVNProgressTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -87,6 +155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78AF4B481CF732500071744E /* KVNProgressFramework.framework in Frameworks */,
 				0AA0DCED1930DFAD00FDD29F /* CoreGraphics.framework in Frameworks */,
 				0AA0DCEF1930DFAD00FDD29F /* UIKit.framework in Frameworks */,
 				0AA0DCEB1930DFAD00FDD29F /* Foundation.framework in Frameworks */,
@@ -101,6 +170,21 @@
 				0AA0DD0C1930DFAD00FDD29F /* UIKit.framework in Frameworks */,
 				0AA0DD0B1930DFAD00FDD29F /* Foundation.framework in Frameworks */,
 				B7AEA695F14877870205F81C /* libPods-KVNProgressTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78AF4B2F1CF7324F0071744E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78AF4B391CF732500071744E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78AF4B3D1CF732500071744E /* KVNProgressFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +209,8 @@
 			children = (
 				0AA0DCF01930DFAD00FDD29F /* KVNProgress */,
 				0AA0DD0F1930DFAD00FDD29F /* KVNProgressTests */,
+				78AF4B341CF7324F0071744E /* KVNProgressFramework */,
+				78AF4B421CF732500071744E /* KVNProgressFrameworkTests */,
 				0AA0DCE91930DFAD00FDD29F /* Frameworks */,
 				0AA0DCE81930DFAD00FDD29F /* Products */,
 				CB962F7FECF6EC14A938952F /* Pods */,
@@ -136,6 +222,8 @@
 			children = (
 				0AA0DCE71930DFAD00FDD29F /* KVNProgress.app */,
 				0AA0DD081930DFAD00FDD29F /* KVNProgressTests.xctest */,
+				78AF4B331CF7324F0071744E /* KVNProgressFramework.framework */,
+				78AF4B3C1CF732500071744E /* KVNProgressFrameworkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -228,6 +316,62 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		78AF4B341CF7324F0071744E /* KVNProgressFramework */ = {
+			isa = PBXGroup;
+			children = (
+				78AF4B511CF732660071744E /* Categories */,
+				78AF4B581CF732660071744E /* Classes */,
+				78AF4B5D1CF732660071744E /* Resources */,
+				78AF4B351CF7324F0071744E /* KVNProgressFramework.h */,
+				78AF4B371CF7324F0071744E /* Info.plist */,
+			);
+			path = KVNProgressFramework;
+			sourceTree = "<group>";
+		};
+		78AF4B421CF732500071744E /* KVNProgressFrameworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				78AF4B431CF732500071744E /* KVNProgressFrameworkTests.m */,
+				78AF4B451CF732500071744E /* Info.plist */,
+			);
+			path = KVNProgressFrameworkTests;
+			sourceTree = "<group>";
+		};
+		78AF4B511CF732660071744E /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				78AF4B521CF732660071744E /* UIColor+KVNContrast.h */,
+				78AF4B531CF732660071744E /* UIColor+KVNContrast.m */,
+				78AF4B541CF732660071744E /* UIImage+KVNEmpty.h */,
+				78AF4B551CF732660071744E /* UIImage+KVNEmpty.m */,
+				78AF4B561CF732660071744E /* UIImage+KVNImageEffects.h */,
+				78AF4B571CF732660071744E /* UIImage+KVNImageEffects.m */,
+			);
+			name = Categories;
+			path = KVNProgress/Categories;
+			sourceTree = SOURCE_ROOT;
+		};
+		78AF4B581CF732660071744E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				78AF4B591CF732660071744E /* KVNProgress.h */,
+				78AF4B5A1CF732660071744E /* KVNProgress.m */,
+				78AF4B5B1CF732660071744E /* KVNProgressConfiguration.h */,
+				78AF4B5C1CF732660071744E /* KVNProgressConfiguration.m */,
+			);
+			name = Classes;
+			path = KVNProgress/Classes;
+			sourceTree = SOURCE_ROOT;
+		};
+		78AF4B5D1CF732660071744E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				78AF4B5E1CF732660071744E /* KVNProgressView.xib */,
+			);
+			name = Resources;
+			path = KVNProgress/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
 		CB962F7FECF6EC14A938952F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +383,22 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		78AF4B301CF7324F0071744E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78AF4B671CF732660071744E /* KVNProgressConfiguration.h in Headers */,
+				78AF4B5F1CF732660071744E /* UIColor+KVNContrast.h in Headers */,
+				78AF4B631CF732660071744E /* UIImage+KVNImageEffects.h in Headers */,
+				78AF4B651CF732660071744E /* KVNProgress.h in Headers */,
+				78AF4B361CF7324F0071744E /* KVNProgressFramework.h in Headers */,
+				78AF4B611CF732660071744E /* UIImage+KVNEmpty.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		0AA0DCE61930DFAD00FDD29F /* KVNProgress */ = {
 			isa = PBXNativeTarget;
@@ -249,10 +409,12 @@
 				0AA0DCE31930DFAD00FDD29F /* Sources */,
 				0AA0DCE41930DFAD00FDD29F /* Frameworks */,
 				0AA0DCE51930DFAD00FDD29F /* Resources */,
+				78AF4B4F1CF732500071744E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				78AF4B471CF732500071744E /* PBXTargetDependency */,
 			);
 			name = KVNProgress;
 			productName = KVNProgress;
@@ -279,6 +441,43 @@
 			productReference = 0AA0DD081930DFAD00FDD29F /* KVNProgressTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		78AF4B321CF7324F0071744E /* KVNProgressFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78AF4B4E1CF732500071744E /* Build configuration list for PBXNativeTarget "KVNProgressFramework" */;
+			buildPhases = (
+				78AF4B2E1CF7324F0071744E /* Sources */,
+				78AF4B2F1CF7324F0071744E /* Frameworks */,
+				78AF4B301CF7324F0071744E /* Headers */,
+				78AF4B311CF7324F0071744E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KVNProgressFramework;
+			productName = KVNProgressFramework;
+			productReference = 78AF4B331CF7324F0071744E /* KVNProgressFramework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		78AF4B3B1CF732500071744E /* KVNProgressFrameworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78AF4B501CF732500071744E /* Build configuration list for PBXNativeTarget "KVNProgressFrameworkTests" */;
+			buildPhases = (
+				78AF4B381CF732500071744E /* Sources */,
+				78AF4B391CF732500071744E /* Frameworks */,
+				78AF4B3A1CF732500071744E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				78AF4B3F1CF732500071744E /* PBXTargetDependency */,
+				78AF4B411CF732500071744E /* PBXTargetDependency */,
+			);
+			name = KVNProgressFrameworkTests;
+			productName = KVNProgressFrameworkTests;
+			productReference = 78AF4B3C1CF732500071744E /* KVNProgressFrameworkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -293,6 +492,14 @@
 						DevelopmentTeam = UAY63PVC53;
 					};
 					0AA0DD071930DFAD00FDD29F = {
+						TestTargetID = 0AA0DCE61930DFAD00FDD29F;
+					};
+					78AF4B321CF7324F0071744E = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = UAY63PVC53;
+					};
+					78AF4B3B1CF732500071744E = {
+						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = 0AA0DCE61930DFAD00FDD29F;
 					};
 				};
@@ -312,6 +519,8 @@
 			targets = (
 				0AA0DCE61930DFAD00FDD29F /* KVNProgress */,
 				0AA0DD071930DFAD00FDD29F /* KVNProgressTests */,
+				78AF4B321CF7324F0071744E /* KVNProgressFramework */,
+				78AF4B3B1CF732500071744E /* KVNProgressFrameworkTests */,
 			);
 		};
 /* End PBXProject section */
@@ -333,6 +542,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AA0DD141930DFAD00FDD29F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78AF4B311CF7324F0071744E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78AF4B691CF732660071744E /* KVNProgressView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78AF4B3A1CF732500071744E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +650,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		78AF4B2E1CF7324F0071744E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78AF4B681CF732660071744E /* KVNProgressConfiguration.m in Sources */,
+				78AF4B661CF732660071744E /* KVNProgress.m in Sources */,
+				78AF4B641CF732660071744E /* UIImage+KVNImageEffects.m in Sources */,
+				78AF4B601CF732660071744E /* UIColor+KVNContrast.m in Sources */,
+				78AF4B621CF732660071744E /* UIImage+KVNEmpty.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78AF4B381CF732500071744E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78AF4B441CF732500071744E /* KVNProgressFrameworkTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -433,6 +677,21 @@
 			isa = PBXTargetDependency;
 			target = 0AA0DCE61930DFAD00FDD29F /* KVNProgress */;
 			targetProxy = 0AA0DD0D1930DFAD00FDD29F /* PBXContainerItemProxy */;
+		};
+		78AF4B3F1CF732500071744E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 78AF4B321CF7324F0071744E /* KVNProgressFramework */;
+			targetProxy = 78AF4B3E1CF732500071744E /* PBXContainerItemProxy */;
+		};
+		78AF4B411CF732500071744E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0AA0DCE61930DFAD00FDD29F /* KVNProgress */;
+			targetProxy = 78AF4B401CF732500071744E /* PBXContainerItemProxy */;
+		};
+		78AF4B471CF732500071744E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 78AF4B321CF7324F0071744E /* KVNProgressFramework */;
+			targetProxy = 78AF4B461CF732500071744E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -553,6 +812,7 @@
 				);
 				INFOPLIST_FILE = "KVNProgress/KVNProgress-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -574,6 +834,7 @@
 				);
 				INFOPLIST_FILE = "KVNProgress/KVNProgress-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -623,6 +884,102 @@
 			};
 			name = Release;
 		};
+		78AF4B4A1CF732500071744E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = KVNProgressFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = digital.thirtyseventy.KVNProgressFramework;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		78AF4B4B1CF732500071744E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = KVNProgressFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = digital.thirtyseventy.KVNProgressFramework;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		78AF4B4C1CF732500071744E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = KVNProgressFrameworkTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = digital.thirtyseventy.KVNProgressFrameworkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KVNProgress.app/KVNProgress";
+			};
+			name = Debug;
+		};
+		78AF4B4D1CF732500071744E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = KVNProgressFrameworkTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = digital.thirtyseventy.KVNProgressFrameworkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KVNProgress.app/KVNProgress";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -652,6 +1009,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		78AF4B4E1CF732500071744E /* Build configuration list for PBXNativeTarget "KVNProgressFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78AF4B4A1CF732500071744E /* Debug */,
+				78AF4B4B1CF732500071744E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		78AF4B501CF732500071744E /* Build configuration list for PBXNativeTarget "KVNProgressFrameworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78AF4B4C1CF732500071744E /* Debug */,
+				78AF4B4D1CF732500071744E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
