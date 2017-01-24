@@ -102,11 +102,25 @@
 
 - (IBAction)showWithStatus
 {
-	[KVNProgress showWithStatus:@"Loading..."];
+	//[KVNProgress showWithStatus:@"Loading..."];
+    self.basicConfiguration.allowUserInteraction = NO;
+    [KVNProgress showProgress:1000
+                       status:@"S T A T U S S T A T U S S T A T U S S T A T U S S T A T U S S T A T U S S T A T U S S T A T U S S T A T U S S T A T U S"
+                       onView:nil
+                   completion:nil
+                  description:@"D e s  c r i p t i  o n  d e s c r  i p t i  o n d e s c r  i p t i  o n d e s c  r i p t i o n description description description description description description description description description description description description description description description description description"
+            statusButtonTitle:@"Press me guy!"
+        buttonTouchCompletion:^{
+            NSLog(@"BUTTON PRESSED");
+            [KVNProgress dismiss];
+            
+        }];
+    
+    
 	
-	dispatch_main_after(3.0f, ^{
-		[KVNProgress dismiss];
-	});
+//	dispatch_main_after(5.0f, ^{
+//		[KVNProgress dismiss];
+//	});
 }
 
 - (IBAction)showProgress

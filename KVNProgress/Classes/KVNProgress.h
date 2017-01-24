@@ -157,6 +157,38 @@ typedef void (^KVNCompletionBlock)(void);
 					 onView:(UIView *)superview
 				 completion:(KVNCompletionBlock)completion;
 
+#pragma mark - Custom
+
+
++ (void)showWithStatus:(NSString *)status
+              onView:(UIView *)superview
+          completion:(KVNCompletionBlock)completion
+         description:(NSString *)statusDescription
+   statusButtonTitle:(NSString *)statusButtonTitle
+buttonTouchCompletion:(KVNCompletionBlock)buttonTouchCompletion;
+
++ (void)showProgress:(CGFloat)progress
+              status:(NSString *)status
+              onView:(UIView *)superview
+          completion:(KVNCompletionBlock)completion
+         description:(NSString *)statusDescription
+   statusButtonTitle:(NSString *)statusButtonTitle
+buttonTouchCompletion:(KVNCompletionBlock)buttonTouchCompletion;
+
++ (void)showSuccessWithStatus:(NSString *)status
+                       onView:(UIView *)superview
+                   completion:(KVNCompletionBlock)completion
+                  description:(NSString *)statusDescription
+            statusButtonTitle:(NSString *)statusButtonTitle
+        buttonTouchCompletion:(KVNCompletionBlock)buttonTouchCompletion;
+
++ (void)showErrorWithStatus:(NSString *)status
+                     onView:(UIView *)superview
+                 completion:(KVNCompletionBlock)completion
+                description:(NSString *)statusDescription
+          statusButtonTitle:(NSString *)statusButtonTitle
+      buttonTouchCompletion:(KVNCompletionBlock)buttonTouchCompletion;
+
 #pragma mark - Dimiss
 
 /**

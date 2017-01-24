@@ -47,6 +47,8 @@
 		78AF4B681CF732660071744E /* KVNProgressConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AF4B5C1CF732660071744E /* KVNProgressConfiguration.m */; };
 		78AF4B691CF732660071744E /* KVNProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78AF4B5E1CF732660071744E /* KVNProgressView.xib */; };
 		B7AEA695F14877870205F81C /* libPods-KVNProgressTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B43D6870AC5276C24F2B9384 /* libPods-KVNProgressTests.a */; };
+		E9EBFD371E36B535009E95C0 /* KVNProgressViewCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9EBFD361E36B534009E95C0 /* KVNProgressViewCustom.xib */; };
+		E9EBFD381E36B535009E95C0 /* KVNProgressViewCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9EBFD361E36B534009E95C0 /* KVNProgressViewCustom.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +150,7 @@
 		78AF4B5E1CF732660071744E /* KVNProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KVNProgressView.xib; sourceTree = "<group>"; };
 		AC926D9E042446C786108BC3 /* Pods-KVNProgressTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KVNProgressTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KVNProgressTests/Pods-KVNProgressTests.release.xcconfig"; sourceTree = "<group>"; };
 		B43D6870AC5276C24F2B9384 /* libPods-KVNProgressTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KVNProgressTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9EBFD361E36B534009E95C0 /* KVNProgressViewCustom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KVNProgressViewCustom.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				0AA0DD2C1930F76A00FDD29F /* KVNProgressView.xib */,
+				E9EBFD361E36B534009E95C0 /* KVNProgressViewCustom.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -534,6 +538,7 @@
 				0A85E7761932755300B16419 /* Images.xcassets in Resources */,
 				0AA0DCFE1930DFAD00FDD29F /* Main.storyboard in Resources */,
 				0AA0DD2D1930F76A00FDD29F /* KVNProgressView.xib in Resources */,
+				E9EBFD371E36B535009E95C0 /* KVNProgressViewCustom.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +554,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9EBFD381E36B535009E95C0 /* KVNProgressViewCustom.xib in Resources */,
 				78AF4B691CF732660071744E /* KVNProgressView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

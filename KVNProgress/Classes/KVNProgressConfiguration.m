@@ -30,7 +30,21 @@
 		
 		_statusColor = [UIColor darkGrayColor];
 		_statusFont = [UIFont systemFontOfSize:17.0f];
+        
+        _statusDescriptionColor = [UIColor darkGrayColor];
+        _statusDescriptionFont = [UIFont systemFontOfSize:15.0f];
+        
+        _statusButtonTitleColorNormal = [UIColor darkGrayColor];
+        _statusButtonColor = [UIColor cyanColor];;
+        _statusButtonTitleFont = [UIFont systemFontOfSize:17.0f];
 		
+
+        _contentViewWidthConstrain = 275.0;
+        _statusButtonWidthConstrain = 275.0;
+        _statusButtonHeightConstrain = 44.0;
+        _statusButtonLeadingConstrain = 30.0;
+        _statusButtonTrailingConstrain = 30.0;
+        
 		_successColor = [_statusColor copy];
 		_errorColor = [_statusColor copy];
         _stopColor = [_statusColor copy];
@@ -67,7 +81,21 @@
 	
 	copy.statusColor = [self.statusColor copy];
 	copy.statusFont = [self.statusFont copy];
-	
+    
+    copy.statusDescriptionColor = [self.statusDescriptionColor copy];
+    copy.statusDescriptionFont = [self.statusDescriptionFont copy];
+    
+    copy.statusButtonTitleColorNormal = self.statusButtonTitleColorNormal;
+    copy.statusButtonColor = self.statusButtonColor;
+    copy.statusButtonTitleFont = self.statusButtonTitleFont;
+    
+    copy.contentViewWidthConstrain = self.contentViewWidthConstrain;
+    
+    copy.statusButtonWidthConstrain = self.statusButtonWidthConstrain;
+    copy.statusButtonHeightConstrain = self.statusButtonHeightConstrain;
+    copy.statusButtonLeadingConstrain = self.statusButtonLeadingConstrain;
+    copy.statusButtonTrailingConstrain = self.statusButtonTrailingConstrain;
+    
 	copy.successColor = [self.successColor copy];
 	copy.errorColor = [self.errorColor copy];
     copy.stopColor = [self.stopColor copy];

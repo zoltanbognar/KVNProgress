@@ -42,7 +42,6 @@ static CGFloat const KVNCheckmarkAnimationDuration = 0.5f;
 static CGFloat const KVNInfiniteLoopAnimationDuration = 1.0f;
 static CGFloat const KVNProgressAnimationDuration = 0.25f;
 static CGFloat const KVNProgressIndeterminate = CGFLOAT_MAX;
-static CGFloat const KVNCircleProgressViewToStatusLabelVerticalSpaceConstraintConstant = 20.0f;
 static CGFloat const KVNContentViewFullScreenModeLeadingAndTrailingSpaceConstraintConstant = 0.0f;
 static CGFloat const KVNContentViewNotFullScreenModeLeadingAndTrailingSpaceConstraintConstant = 25.0f;
 static CGFloat const KVNContentViewWithStatusInset = 10.0f;
@@ -51,6 +50,9 @@ static CGFloat const KVNContentViewCornerRadius = 8.0f;
 static CGFloat const KVNContentViewWithoutStatusCornerRadius = 15.0f;
 static CGFloat const KVNAlertViewWidth = 270.0f;
 static CGFloat const KVNMotionEffectRelativeValue = 10.0f;
+static CGFloat const KVNCircleProgressViewToStatusLabelVerticalSpaceConstraintConstant = 30.0f;
+static CGFloat const KVNStatusLabelToStatusDescriptionTextViewVerticalSpaceConstraintConstant = 15.0f;
+static CGFloat const KVNStatusDescriptionTextViewToStatusButtonVerticalSpaceConstraintConstant = 30.0f;
 
 static KVNProgressConfiguration *configuration;
 
@@ -59,17 +61,23 @@ static KVNProgressConfiguration *configuration;
 @property (nonatomic) CGFloat progress;
 @property (nonatomic) KVNProgressBackgroundType backgroundType;
 @property (nonatomic) NSString *status;
+@property (nonatomic) NSString *statusDescription;
+@property (nonatomic) NSString *statusButtonTitle;
 @property (nonatomic) KVNProgressStyle style;
 @property (nonatomic) KVNProgressConfiguration *configuration;
 @property (nonatomic) NSDate *showActionTrigerredDate;
 @property (nonatomic, getter = isFullScreen) BOOL fullScreen;
 @property (nonatomic, getter = isWaitingToChangeHUD) BOOL waitingToChangeHUD;
 @property (nonatomic) KVNProgressState state;
+@property (nonatomic) KVNCompletionBlock statusButtonCompletion;
 
 // UI
 @property (nonatomic, weak) IBOutlet UIImageView *contentView;
 @property (nonatomic, weak) IBOutlet UIView *circleProgressView;
 @property (nonatomic, weak) IBOutlet UILabel *statusLabel;
+//@property (nonatomic, weak) IBOutlet UITextView *statusDescriptionTextView;
+@property (nonatomic, weak) IBOutlet UILabel *statusDescriptionTextView;
+@property (nonatomic, weak) IBOutlet UIButton *statusButton;
 @property (nonatomic, weak) IBOutlet UIImageView *backgroundImageView;
 
 @property (nonatomic, strong) CAShapeLayer *checkmarkLayer;
@@ -88,6 +96,11 @@ static KVNProgressConfiguration *configuration;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *circleProgressViewTopToSuperViewConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *statusLabelBottomToSuperViewConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewWidthConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *statusLabelToStatusDescriptionTextViewVerticalSpaceConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *statusDescriptionTextViewToStatusButtonVerticalSpaceConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *statusDescriptionTextViewHeightConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *statusButtonHeightConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *statusButtonWidthConstraint;
 
 @property (nonatomic) NSArray *constraintsToSuperview;
 
@@ -106,7 +119,7 @@ static KVNProgressConfiguration *configuration;
 	static dispatch_once_t onceToken;
 	
 	dispatch_once(&onceToken, ^{
-		UINib *nib = [UINib nibWithNibName:@"KVNProgressView"
+		UINib *nib = [UINib nibWithNibName:@"KVNProgressViewCustom"
                                     bundle:[NSBundle bundleForClass:[self class]]];
 		NSArray *nibViews = [nib instantiateWithOwner:self
 											  options:0];
@@ -325,6 +338,245 @@ static KVNProgressConfiguration *configuration;
 				   completion:completion];
 }
 
+
+
+#pragma mark - Custom
+
++ (void)showWithStatus:(NSString *)status
+              onView:(UIView *)superview
+          completion:(KVNCompletionBlock)completion
+         description:(NSString *)statusDescription
+   statusButtonTitle:(NSString *)statusButtonTitle
+buttonTouchCompletion:(KVNCompletionBlock)buttonTouchCompletion
+{
+    [self showHUDWithProgress:KVNProgressIndeterminate
+                        style:KVNProgressStyleHidden
+                       status:status
+                    superview:superview
+                   completion:completion
+                  description:statusDescription
+            statusButtonTitle:statusButtonTitle
+        buttonTouchCompletion:buttonTouchCompletion];
+}
+
+
++ (void)showProgress:(CGFloat)progress
+              status:(NSString *)status
+              onView:(UIView *)superview
+          completion:(KVNCompletionBlock)completion
+         description:(NSString *)statusDescription
+   statusButtonTitle:(NSString *)statusButtonTitle
+buttonTouchCompletion:(KVNCompletionBlock)buttonTouchCompletion
+{
+    [self showHUDWithProgress:KVNProgressIndeterminate
+                        style:KVNProgressStyleProgress
+                       status:status
+                    superview:superview
+                   completion:completion
+                  description:statusDescription
+            statusButtonTitle:statusButtonTitle
+        buttonTouchCompletion:buttonTouchCompletion];
+}
+
+
++ (void)showSuccessWithStatus:(NSString *)status
+                       onView:(UIView *)superview
+                   completion:(KVNCompletionBlock)completion
+                  description:(NSString *)statusDescription
+            statusButtonTitle:(NSString *)statusButtonTitle
+        buttonTouchCompletion:(KVNCompletionBlock)buttonTouchCompletion
+{
+    [self showHUDWithProgress:KVNProgressIndeterminate
+                        style:KVNProgressStyleSuccess
+                       status:status
+                    superview:superview
+                   completion:completion
+                  description:statusDescription
+            statusButtonTitle:statusButtonTitle
+        buttonTouchCompletion:buttonTouchCompletion];
+}
+
++ (void)showErrorWithStatus:(NSString *)status
+                     onView:(UIView *)superview
+                 completion:(KVNCompletionBlock)completion
+                description:(NSString *)statusDescription
+                statusButtonTitle:(NSString *)statusButtonTitle
+                buttonTouchCompletion:(KVNCompletionBlock)buttonTouchCompletion
+{
+    [self showHUDWithProgress:KVNProgressIndeterminate
+                        style:KVNProgressStyleError
+                       status:status
+                    superview:superview
+                   completion:completion
+                  description:statusDescription
+            statusButtonTitle:statusButtonTitle
+        buttonTouchCompletion:buttonTouchCompletion];
+}
+
+
+
++ (void)showHUDWithProgress:(CGFloat)progress
+                      style:(KVNProgressStyle)style
+                     status:(NSString *)status
+                  superview:(UIView *)superview
+                 completion:(KVNCompletionBlock)completion
+                description:(NSString *)statusDescription
+          statusButtonTitle:(NSString *)statusButtonTitle
+      buttonTouchCompletion:(KVNCompletionBlock)buttonTouchCompletion
+{
+    [[self sharedView] showProgress:progress
+                             status:status
+                              style:style
+                     backgroundType:configuration.backgroundType
+                         fullScreen:configuration.fullScreen
+                               view:superview
+                         completion:completion
+                        description:statusDescription
+                  statusButtonTitle:statusButtonTitle
+              buttonTouchCompletion:buttonTouchCompletion];
+}
+
+- (void)showProgress:(CGFloat)progress
+              status:(NSString *)status
+               style:(KVNProgressStyle)style
+      backgroundType:(KVNProgressBackgroundType)backgroundType
+          fullScreen:(BOOL)fullScreen
+                view:(UIView *)superview
+          completion:(KVNCompletionBlock)completion
+         description:(NSString *)statusDescription
+          statusButtonTitle:(NSString *)statusButtonTitle
+         buttonTouchCompletion:(KVNCompletionBlock)buttonTouchCompletion
+{
+    KVNPrepareBlockSelf();
+    
+    // We check if a previous HUD is displaying
+    // If so, we wait its minimum display time before switching to the new one
+    // But, if we are changing from an indeterminate progress HUD to a determinate one,
+    // we do not apply this rule
+    if (![self isWaitingToChangeHUD] && self.style != KVNProgressStyleHidden
+        && !(self.style == KVNProgressStyleProgress && self.progress == KVNProgressIndeterminate && progress != KVNProgressIndeterminate)
+        && !(self.style == KVNProgressStyleProgress && self.progress != KVNProgressIndeterminate)) {
+        self.waitingToChangeHUD = YES;
+        self.state = KVNProgressStateShowed;
+        
+        NSTimeInterval timeIntervalSinceShow = [self.showActionTrigerredDate timeIntervalSinceNow];
+        NSTimeInterval delay = 0;
+        
+        if (timeIntervalSinceShow < self.configuration.minimumDisplayTime) {
+            // The hud hasn't showed enough time
+            timeIntervalSinceShow = (timeIntervalSinceShow < 0) ? 0 : timeIntervalSinceShow;
+            delay = self.configuration.minimumDisplayTime - timeIntervalSinceShow;
+        }
+        
+        if (delay > 0) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (KVNBlockSelf.state == KVNProgressStateDismissing || ![KVNBlockSelf.class isVisible]) {
+                    // While waiting for displaying previous HUD enough time before showing the new one,
+                    // the dismiss method on this new HUD has already been called
+                    // So logically, we do not display the new HUD that is already dismissed (before even being displayed)
+                    return;
+                }
+                
+                [KVNBlockSelf showProgress:progress
+                                    status:status
+                                     style:style
+                            backgroundType:backgroundType
+                                fullScreen:fullScreen
+                                      view:superview
+                                completion:completion
+                               description:statusDescription
+                                    statusButtonTitle:statusButtonTitle
+                     buttonTouchCompletion:buttonTouchCompletion];
+            });
+            
+            return;
+        }
+    }
+    
+    // We're going to create a new HUD
+    self.waitingToChangeHUD = NO;
+    self.progress = progress;
+    self.status = [status copy];
+    self.style = style;
+    self.backgroundType = backgroundType;
+    self.fullScreen = fullScreen;
+    self.statusDescription = [statusDescription copy];
+    self.statusButtonTitle = [statusButtonTitle copy];
+    self.statusButtonCompletion = buttonTouchCompletion;
+    
+    BOOL showButton = (self.statusButtonTitle.length > 0);
+    
+    self.accessibilityValue = @"displayed";
+    
+    // If HUD is already added to the view we just update the UI
+    if ([self.class isVisible]) {
+        self.state = KVNProgressStateShowed;
+        
+        [UIView animateWithDuration:KVNLayoutAnimationDuration
+                         animations:^{
+                             [KVNBlockSelf setupUI:NO];
+                         }];
+        
+        KVNBlockSelf.showActionTrigerredDate = [NSDate date];
+        [KVNBlockSelf animateUI];
+    } else {
+        self.state = KVNProgressStateAppearing;
+        
+        if (superview) {
+            [self addToView:superview];
+        } else {
+            [self addToCurrentWindow];
+        }
+        
+        [self setupUI:YES];
+        self.animateAppearanceOperation = [NSBlockOperation blockOperationWithBlock:^{
+            [KVNBlockSelf animateUI];
+            [KVNBlockSelf animateAppearance];
+        }];
+        
+        // FIXME: find a way to wait for the views to be added to the window before launching the animations
+        // (Fix to make the animations work fine)
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (![KVNBlockSelf.queue.operations containsObject:KVNBlockSelf.animateAppearanceOperation] &&
+                ![KVNBlockSelf.animateAppearanceOperation isFinished])
+            {
+                [KVNBlockSelf.queue addOperation:KVNBlockSelf.animateAppearanceOperation];
+            }
+        });
+    }
+    
+    // If it's an auto-dismissable HUD
+    if (self.style != KVNProgressStyleProgress) {
+        NSTimeInterval delay;
+        switch (self.style) {
+            case KVNProgressStyleProgress:
+                // should never happen
+                return;
+            case KVNProgressStyleSuccess:
+                
+                delay = self.configuration.minimumSuccessDisplayTime;
+                break;
+            case KVNProgressStyleError:
+                
+                delay = self.configuration.minimumErrorDisplayTime;
+                break;
+            case KVNProgressStyleHidden:
+                // should never happen
+                return;
+        }
+        
+        if (!showButton) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [KVNBlockSelf.class dismissWithCompletion:completion];
+            });
+        }
+    }
+}
+
+
+
+
+
 #pragma mark - Show
 
 + (void)showHUDWithProgress:(CGFloat)progress
@@ -397,6 +649,8 @@ static KVNProgressConfiguration *configuration;
 	self.waitingToChangeHUD = NO;
 	self.progress = progress;
 	self.status = [status copy];
+    self.statusDescription = @"";
+    self.statusButtonTitle = @"";
 	self.style = style;
 	self.backgroundType = backgroundType;
 	self.fullScreen = fullScreen;
@@ -561,6 +815,8 @@ static KVNProgressConfiguration *configuration;
 	[self setupConstraints];
 	[self setupCircleProgressView];
 	[self setupStatus:self.status];
+    [self setupStatusDescription:self.statusDescription];
+    [self setupStatusButtonTitle:self.statusButtonTitle];
 	[self setupBackground];
 }
 
@@ -626,8 +882,8 @@ static KVNProgressConfiguration *configuration;
 	}
 	
 	self.circleProgressViewTopToSuperViewConstraint.constant = statusInset;
-	self.statusLabelBottomToSuperViewConstraint.constant = statusInset;
-	self.contentViewWidthConstraint.constant = contentWidth;
+	self.contentViewWidthConstraint.constant = self.configuration.contentViewWidthConstrain;
+
 	
 	[self layoutIfNeeded];
 }
@@ -635,8 +891,8 @@ static KVNProgressConfiguration *configuration;
 - (void)setupCircleProgressView
 {
 	// Constraints
-	self.circleProgressViewWidthConstraint.constant = self.configuration.circleSize;
-	self.circleProgressViewHeightConstraint.constant = self.configuration.circleSize;
+    self.circleProgressViewWidthConstraint.constant = self.style == KVNProgressStateHidden ? 0 : self.configuration.circleSize;
+    self.circleProgressViewHeightConstraint.constant = self.style == KVNProgressStateHidden ? 0 : self.configuration.circleSize;
 	
 	[self layoutIfNeeded];
 	
@@ -833,8 +1089,62 @@ static KVNProgressConfiguration *configuration;
 	self.statusLabel.textColor = self.configuration.statusColor;
 	self.statusLabel.font = self.configuration.statusFont;
 	self.statusLabel.hidden = !showStatus;
+    self.statusLabel.frame = showStatus ? self.statusLabel.frame : CGRectZero;
 	
 	[self updateStatusConstraints];
+}
+
+- (void)setupStatusDescription:(NSString *)statusDescription
+{
+    self.statusDescription = statusDescription;
+    
+    BOOL showStatusDescription = (self.statusDescription.length > 0);
+    
+    CATransition *animation = [CATransition animation];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animation.type = kCATransitionFade;
+    animation.duration = KVNTextUpdateAnimationDuration;
+    [self.statusDescriptionTextView.layer addAnimation:animation forKey:@"kCATransitionFade"];
+    
+    self.statusDescriptionTextView.text = self.statusDescription;
+    self.statusDescriptionTextView.textColor = self.configuration.statusDescriptionColor;
+    self.statusDescriptionTextView.font = self.configuration.statusDescriptionFont;
+    self.statusDescriptionTextView.hidden = !showStatusDescription;
+    self.statusDescriptionTextView.frame = showStatusDescription ? self.statusDescriptionTextView.frame : CGRectZero;
+    
+    [self updateStatusDescriptionConstraints];
+}
+
+- (void)setupStatusButtonTitle:(NSString *)statusButtonTitle
+{
+    self.statusButtonTitle = statusButtonTitle;
+    
+    BOOL showButton = (self.statusButtonTitle.length > 0);
+    
+    CATransition *animation = [CATransition animation];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animation.type = kCATransitionFade;
+    animation.duration = KVNTextUpdateAnimationDuration;
+    [self.statusButton.titleLabel.layer addAnimation:animation forKey:@"kCATransitionFade"];
+    
+    [self.statusButton setTitle:self.statusButtonTitle forState:UIControlStateNormal];
+    [self.statusButton setTitleColor:self.configuration.statusButtonTitleColorNormal forState:UIControlStateNormal];
+    [self.statusButton setBackgroundColor:self.configuration.statusButtonColor];
+    [self.statusButton.titleLabel setFont:self.configuration.statusButtonTitleFont];
+    [self.statusButton addTarget:self action:@selector(buttonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    self.statusButton.hidden = !showButton;
+    self.statusButton.frame = showButton ? self.statusButton.frame : CGRectZero;
+    
+    [self updateStatusButtonConstraints];
+}
+
+- (void)buttonTouchUpInside:(UIButton *)sender
+{
+    if (self.statusButtonCompletion != nil) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.statusButtonCompletion();
+        });
+    }
 }
 
 - (void)setupBackground
@@ -989,7 +1299,7 @@ static KVNProgressConfiguration *configuration;
 {
 	if (![self isFullScreen] && self.status.length == 0) {
 		self.circleProgressViewTopToSuperViewConstraint.constant = KVNContentViewWithoutStatusInset;
-		self.statusLabelBottomToSuperViewConstraint.constant = KVNContentViewWithoutStatusInset;
+		//self.statusLabelBottomToSuperViewConstraint.constant = KVNContentViewWithoutStatusInset;
 		
 		// We sets the width as the height to have a square
 		CGSize fittingSize = [self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
@@ -1008,9 +1318,13 @@ static KVNProgressConfiguration *configuration;
 		[UIView animateWithDuration:KVNLayoutAnimationDuration
 						 animations:^{
 							 [self setupStatus:status];
+                             [self setupStatusDescription:nil];
+                             [self setupStatusButtonTitle:nil];
 						 }];
 	} else {
 		[self setupStatus:status];
+        [self setupStatusDescription:nil];
+        [self setupStatusButtonTitle:nil];
 	}
 }
 
@@ -1019,12 +1333,36 @@ static KVNProgressConfiguration *configuration;
 	BOOL showStatus = (self.status.length > 0);
 	
 	self.circleProgressViewToStatusLabelVerticalSpaceConstraint.constant = (showStatus) ? KVNCircleProgressViewToStatusLabelVerticalSpaceConstraintConstant : 0.0f;
-	
-	CGSize maximumLabelSize = CGSizeMake(CGRectGetWidth(self.statusLabel.bounds), CGFLOAT_MAX);
-	CGSize statusLabelSize = [self.statusLabel sizeThatFits:maximumLabelSize];
-	self.statusLabelHeightConstraint.constant = statusLabelSize.height;
-	
+		
 	[self layoutIfNeeded];
+}
+
+- (void)updateStatusDescriptionConstraints
+{
+    BOOL showStatusDescription = (self.statusDescription.length > 0);
+    
+    self.statusLabelToStatusDescriptionTextViewVerticalSpaceConstraint.constant = (showStatusDescription) ? KVNStatusLabelToStatusDescriptionTextViewVerticalSpaceConstraintConstant : 0.0f;
+    
+    [self layoutIfNeeded];
+}
+
+- (void)updateStatusButtonConstraints
+{
+    BOOL showStatusButton = (self.statusButtonTitle.length > 0);
+    
+    self.statusDescriptionTextViewToStatusButtonVerticalSpaceConstraint.constant = (showStatusButton) ? KVNStatusDescriptionTextViewToStatusButtonVerticalSpaceConstraintConstant : 0.0f;
+    
+    self.statusButtonWidthConstraint.constant = self.configuration.statusButtonWidthConstrain;
+    self.statusButtonHeightConstraint.constant = self.configuration.statusButtonHeightConstrain;
+    
+    self.statusButtonHeightConstraint.constant = (showStatusButton) ?
+    self.statusButtonHeightConstraint.constant : 0.0f;
+    
+    self.statusButton.contentEdgeInsets = (showStatusButton) ?
+    UIEdgeInsetsMake(0, 0, 0, 0) : UIEdgeInsetsMake(-18, 0, 0, 0);
+    [self.statusButton layoutIfNeeded];
+    
+    [self layoutIfNeeded];
 }
 
 + (void)updateProgress:(CGFloat)progress
@@ -1368,6 +1706,11 @@ static KVNProgressConfiguration *configuration;
 // Used to block interaction for all views behind
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
 {
+    /// Used for button show case
+    if (!self.configuration.allowUserInteraction) {
+        return [super hitTest:point withEvent:event];
+    }
+    
 	if (self.configuration.allowUserInteraction && ![self isFullScreen]) {
 		return nil;
 	} else {

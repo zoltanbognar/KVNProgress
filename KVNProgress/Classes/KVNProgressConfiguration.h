@@ -63,6 +63,40 @@ typedef NS_ENUM(NSUInteger, KVNProgressBackgroundType) {
 /** Font of the status label. */
 @property (nonatomic, strong) UIFont *statusFont;
 
+#pragma mark - StatusDescription
+
+/** Color of the statusDescription textView. */
+@property (nonatomic, strong) UIColor *statusDescriptionColor;
+/** Font of the statusDescription textView. */
+@property (nonatomic, strong) UIFont *statusDescriptionFont;
+
+
+#pragma mark - StatusButton
+
+/** Color of the statusButtonTitleColorNormal. */
+@property (nonatomic, strong) UIColor *statusButtonTitleColorNormal;
+/** Color of the statusButtonColorNormal. */
+@property (nonatomic, strong) UIColor *statusButtonColor;
+/** Font of the statusDescription. */
+@property (nonatomic, strong) UIFont *statusButtonTitleFont;
+
+
+#pragma mark - Constrains
+
+/** Width Constrains of the contentView. */
+@property (nonatomic) CGFloat contentViewWidthConstrain;
+
+/** Width Constrains of the statusButton. */
+@property (nonatomic) CGFloat statusButtonWidthConstrain;
+/** Height Constrains of the statusButton. */
+@property (nonatomic) CGFloat statusButtonHeightConstrain;
+/** Left Constrains of the statusButton. */
+@property (nonatomic) CGFloat statusButtonLeadingConstrain;
+/** Right Constrains of the statusButton. */
+@property (nonatomic) CGFloat statusButtonTrailingConstrain;
+
+
+
 #pragma mark - Success/Error
 
 /** color of the circle and checkmark when showing success. */
