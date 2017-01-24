@@ -104,18 +104,47 @@
 {
 	//[KVNProgress showWithStatus:@"Loading..."];
     self.basicConfiguration.allowUserInteraction = NO;
-    [KVNProgress showProgress:1000
-                       status:@"S T A T U S S T A T U S S T A T U S S T A T U S S T A T U S S T A T U S S T A T U S S T A T U S S T A T U S S T A T U S"
+
+    
+    [KVNProgress showWithStatus:@"No progress view"
                        onView:nil
                    completion:nil
-                  description:@"D e s  c r i p t i  o n  d e s c r  i p t i  o n d e s c r  i p t i  o n d e s c  r i p t i o n description description description description description description description description description description description description description description description description description"
-            statusButtonTitle:@"Press me guy!"
+                  description:@"Description desription"
+            statusButtonTitle:@"Go to progress"
         buttonTouchCompletion:^{
-            NSLog(@"BUTTON PRESSED");
-            [KVNProgress dismiss];
+            
+            [KVNProgress showProgress:1000
+                               status:@"Progress view"
+                               onView:nil
+                           completion:nil
+                          description:@"Description desription"
+                    statusButtonTitle:@"Go to success"
+                buttonTouchCompletion:^{
+                    
+                    [KVNProgress showSuccessWithStatus:@"Success view"
+                                       onView:nil
+                                   completion:nil
+                                  description:@"Description desription"
+                            statusButtonTitle:@"Go to Fail"
+                        buttonTouchCompletion:^{
+                            
+                            [KVNProgress showErrorWithStatus:@"Error view"
+                                                        onView:nil
+                                                    completion:nil
+                                                   description:@"Description desription"
+                                             statusButtonTitle:@"OK"
+                                         buttonTouchCompletion:^{
+                                             
+                                             [KVNProgress dismiss];
+                                             
+                                         }];
+                            
+                        }];
+                    
+                }];
+            
             
         }];
-    
     
 	
 //	dispatch_main_after(5.0f, ^{

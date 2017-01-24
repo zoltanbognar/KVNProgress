@@ -45,8 +45,8 @@
         _statusButtonLeadingConstrain = 30.0;
         _statusButtonTrailingConstrain = 30.0;
         
-		_successColor = [_statusColor copy];
-		_errorColor = [_statusColor copy];
+		_successColor = [UIColor redColor];
+		_errorColor = [UIColor redColor];
         _stopColor = [_statusColor copy];
 		
 		_minimumDisplayTime = 0.3f;

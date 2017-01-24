@@ -987,7 +987,12 @@ buttonTouchCompletion:(KVNCompletionBlock)buttonTouchCompletion
 	
 	[self.circleProgressLineLayer removeAllAnimations];
 	[self.circleProgressView.layer removeAllAnimations];
-	[self.checkmarkLayer removeAllAnimations];
+    [self.checkmarkLayer removeAllAnimations];
+    
+    if (self.circleProgressLineLayer.superlayer) {
+        [self.circleProgressLineLayer removeFromSuperlayer];
+    }
+    
 	[self animateSuccess];
 }
 
@@ -1016,6 +1021,11 @@ buttonTouchCompletion:(KVNCompletionBlock)buttonTouchCompletion
 	[self.circleProgressLineLayer removeAllAnimations];
 	[self.circleProgressView.layer removeAllAnimations];
 	[self.crossLayer removeAllAnimations];
+    
+    if (self.circleProgressLineLayer.superlayer) {
+        [self.circleProgressLineLayer removeFromSuperlayer];
+    }
+    
 	[self animateError];
 }
 
@@ -1333,6 +1343,18 @@ buttonTouchCompletion:(KVNCompletionBlock)buttonTouchCompletion
 	BOOL showStatus = (self.status.length > 0);
 	
 	self.circleProgressViewToStatusLabelVerticalSpaceConstraint.constant = (showStatus) ? KVNCircleProgressViewToStatusLabelVerticalSpaceConstraintConstant : 0.0f;
+    
+    switch (self.style) {
+        case KVNProgressStyleSuccess:
+            self.circleProgressViewToStatusLabelVerticalSpaceConstraint.constant = 0.34f*self.circleProgressViewToStatusLabelVerticalSpaceConstraint.constant;
+            break;
+        case KVNProgressStyleError:
+            self.circleProgressViewToStatusLabelVerticalSpaceConstraint.constant = 0.28f*self.circleProgressViewToStatusLabelVerticalSpaceConstraint.constant;
+            break;
+            
+        default:
+            break;
+    }
 		
 	[self layoutIfNeeded];
 }
